@@ -136,7 +136,7 @@ def check_file(directory):
 
 
 #  A function that gets the directory and then opens the origin file and extracts the needed variables
-def get_creators(directory):
+def get_labels(directory):
     global count
     global parse_error
     global origin_old
@@ -169,16 +169,15 @@ def get_creators(directory):
             print("--You are using the correct version of gazelle-origin.")
 
             # turn the data into variables
-            creators = {
+            labels = {
                 "start_path": directory,
-                "album_directory": data["Directory"],
-                "artist_name": data["Artist"],
-                "dj_name": data["DJs"],
-                "composer_name": data["Composers"],
-                "conductor_name": data["Conductors"],
+                "original_label": data["Original release label"],
+                "original_cat": data["Original catalog number"],
+                "edition_label": data["Record label"],
+                "edition_cat": data["Catalog number"],
             }
             f.close()
-            return creators
+            return labels
         else:
             print("--You need to update your origin files with more metadata.")
             print("--Switch to the gazelle-origin fork here: https://github.com/spinfast319/gazelle-origin")
@@ -213,35 +212,33 @@ def move_albums(move_list):
         count += 1  # variable will increment every loop iteration
 
 
-# A function to sort albums based on their creators and request them to be moved
-def sort_albums(creators):
-    global classical_directory
-    global va_directory
-    global dj_directory
+# A function to sort albums based on their labels and request them to be moved
+def sort_albums(labels):
+    global label_sort_directory
     global log_directory
     global move_list
 
     # creates filters for dj albums, classical albums and various artists with different paths for each
-    if creators != None:
-        start_path = creators["start_path"]
+    if labels != None:
+        start_path = labels["start_path"]
         if start_path != None:
-            if creators["dj_name"] != None:
+            if labels["dj_name"] != None:
                 print("--This should be moved to the DJ folder.")
-                target = os.path.join(dj_directory, creators["album_directory"])
+                target = os.path.join(dj_directory, labels["album_directory"])
                 # make the pair a tupple
                 move_pair = (start_path, target)
                 # adds the tupple to the list
                 move_list.append(move_pair)
-            elif creators["composer_name"] != None or creators["composer_name"] != None:
+            elif labels["composer_name"] != None or labels["composer_name"] != None:
                 print("--This should be moved to the Classical folder.")
-                target = os.path.join(classical_directory, creators["album_directory"])
+                target = os.path.join(classical_directory, labels["album_directory"])
                 # make the pair a tupple
                 move_pair = (start_path, target)
                 # adds the tupple to the list
                 move_list.append(move_pair)
-            elif creators["artist_name"] == "Various Artists":
+            elif labels["artist_name"] == "Various Artists":
                 print("--This should be moved to the Various Artists folder.")
-                target = os.path.join(va_directory, creators["album_directory"])
+                target = os.path.join(va_directory, labels["album_directory"])
                 # make the pair a tupple
                 move_pair = (start_path, target)
                 # adds the tupple to the list
