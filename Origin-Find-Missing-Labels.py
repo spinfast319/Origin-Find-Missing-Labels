@@ -1,7 +1,7 @@
 # Find Missing Labels with Origin Files
 # author: hypermodified
 # This python script is meant to use yaml origin files to sort and move albums that have an original record label and/or cat number but not an edition record label and/or cat number
-# Once the albums are moved they can be checked researched to see if the original data is accurate for the edition and the site and file can be updated.
+# Once the albums are moved they can be researched to see if the original data is accurate for the edition and the site and file can be updated.
 # It can handle strange characters and nested folders. It has been tested and works in both Ubuntu Linux and Windows 10.
 
 # Import dependencies
@@ -219,27 +219,24 @@ def sort_albums(labels):
     global log_directory
     global move_list
     global album_depth
-    
-
-    
 
     # creates filters for to find albums that have original label/cat but do not have edition label/cat with different paths for each
     if labels != None:
         # create origin path
         start_path = labels["start_path"]
         if start_path != None:
-        
+
             # get album name or artist-album name and create target path
             path_parths = start_path.split(os.sep)
             if album_depth == 1:
-                album_name = path_parths[-1]    
-                target = os.path.join(label_sort_directory, album_name)                
-            elif album_depth == 2:    
+                album_name = path_parths[-1]
+                target = os.path.join(label_sort_directory, album_name)
+            elif album_depth == 2:
                 aritist_name = path_parths[-2]
-                album_name = path_parths[-1]  
-                target = os.path.join(label_sort_directory, aritist_name, album_name)                  
-                
-            # Sort the albums    
+                album_name = path_parths[-1]
+                target = os.path.join(label_sort_directory, aritist_name, album_name)
+
+            # Sort the albums
             if labels["original_label"] != None and labels["edition_label"] == None:
                 print("--This should be moved to the Label Sort folder.")
                 # make the pair a tupple
