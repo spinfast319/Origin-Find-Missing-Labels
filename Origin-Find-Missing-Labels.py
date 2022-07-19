@@ -1,6 +1,6 @@
 # Find Missing Labels with Origin Files
 # author: hypermodified
-# This python script is meant to use yaml origin files to sort and move albums that have an original record label and/or cat number but not an edition record label and/or cat number
+# This python script uses yaml origin files to sort and move albums that have an original record label and/or cat number but not an edition record label and/or cat number
 # Once the albums are moved they can be researched to see if the original data is accurate for the edition and the site and file can be updated.
 # It can handle strange characters and nested folders. It has been tested and works in both Ubuntu Linux and Windows 10.
 
