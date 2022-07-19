@@ -171,6 +171,7 @@ def get_labels(directory):
             # turn the data into variables
             labels = {
                 "start_path": directory,
+                "album_directory": data["Directory"],
                 "original_label": data["Original release label"],
                 "original_cat": data["Original catalog number"],
                 "edition_label": data["Record label"],
@@ -218,27 +219,20 @@ def sort_albums(labels):
     global log_directory
     global move_list
 
-    # creates filters for dj albums, classical albums and various artists with different paths for each
+    # creates filters for to find albums that have original label/cat but do not have edition label/cat with different paths for each
     if labels != None:
         start_path = labels["start_path"]
         if start_path != None:
-            if labels["dj_name"] != None:
-                print("--This should be moved to the DJ folder.")
-                target = os.path.join(dj_directory, labels["album_directory"])
+            if labels["original_label"] != None and labels["edition_label"] == None:
+                print("--This should be moved to the Label Sort folder.")
+                target = os.path.join(label_sort_directory, labels["album_directory"])
                 # make the pair a tupple
                 move_pair = (start_path, target)
                 # adds the tupple to the list
                 move_list.append(move_pair)
-            elif labels["composer_name"] != None or labels["composer_name"] != None:
-                print("--This should be moved to the Classical folder.")
-                target = os.path.join(classical_directory, labels["album_directory"])
-                # make the pair a tupple
-                move_pair = (start_path, target)
-                # adds the tupple to the list
-                move_list.append(move_pair)
-            elif labels["artist_name"] == "Various Artists":
-                print("--This should be moved to the Various Artists folder.")
-                target = os.path.join(va_directory, labels["album_directory"])
+            elif labels["original_cat"] != None and labels["edition_cat"] == None:
+                print("--This should be moved to the Label Sort folder.")
+                target = os.path.join(label_sort_directory, labels["album_directory"])
                 # make the pair a tupple
                 move_pair = (start_path, target)
                 # adds the tupple to the list
