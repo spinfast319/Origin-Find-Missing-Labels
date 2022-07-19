@@ -218,21 +218,36 @@ def sort_albums(labels):
     global label_sort_directory
     global log_directory
     global move_list
+    global album_depth
+    
+
+    
 
     # creates filters for to find albums that have original label/cat but do not have edition label/cat with different paths for each
     if labels != None:
+        # create origin path
         start_path = labels["start_path"]
         if start_path != None:
+        
+            # get album name or artist-album name and create target path
+            path_parths = start_path.split(os.sep)
+            if album_depth == 1:
+                album_name = path_parths[-1]    
+                target = os.path.join(label_sort_directory, album_name)                
+            elif album_depth == 2:    
+                aritist_name = path_parths[-2]
+                album_name = path_parths[-1]  
+                target = os.path.join(label_sort_directory, aritist_name, album_name)                  
+                
+            # Sort the albums    
             if labels["original_label"] != None and labels["edition_label"] == None:
                 print("--This should be moved to the Label Sort folder.")
-                target = os.path.join(label_sort_directory, labels["album_directory"])
                 # make the pair a tupple
                 move_pair = (start_path, target)
                 # adds the tupple to the list
                 move_list.append(move_pair)
             elif labels["original_cat"] != None and labels["edition_cat"] == None:
                 print("--This should be moved to the Label Sort folder.")
-                target = os.path.join(label_sort_directory, labels["album_directory"])
                 # make the pair a tupple
                 move_pair = (start_path, target)
                 # adds the tupple to the list
