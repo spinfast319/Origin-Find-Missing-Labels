@@ -13,7 +13,7 @@ import datetime  # Imports functionality that lets you make timestamps
 #  Set your directories here
 album_directory = "M:\Python Test Environment\Albums"  # Which directory do you want to start with?
 log_directory = "M:\Python Test Environment\Logs"  # Which directory do you want the log in?
-label_sort_directory = "M:\Python Test Environment\Sorted\Label Sort"  # Directory to move Various Artist albums to
+sort_directory = "M:\Python Test Environment\Sort - Label"  # Directory to move Various Artist albums to
 
 
 # Set whether you are using nested folders or have all albums in one directory here
@@ -215,7 +215,7 @@ def move_albums(move_list):
 
 # A function to sort albums based on their labels and request them to be moved
 def sort_albums(labels):
-    global label_sort_directory
+    global sort_directory
     global log_directory
     global move_list
     global album_depth
@@ -230,11 +230,11 @@ def sort_albums(labels):
             path_parths = start_path.split(os.sep)
             if album_depth == 1:
                 album_name = path_parths[-1]
-                target = os.path.join(label_sort_directory, album_name)
+                target = os.path.join(sort_directory, album_name)
             elif album_depth == 2:
-                aritist_name = path_parths[-2]
+                artist_name = path_parths[-2]
                 album_name = path_parths[-1]
-                target = os.path.join(label_sort_directory, aritist_name, album_name)
+                target = os.path.join(sort_directory, artist_name, album_name)
 
             # Sort the albums
             if labels["original_label"] != None and labels["edition_label"] == None:
