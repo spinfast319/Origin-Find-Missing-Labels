@@ -5,13 +5,12 @@ Once the albums are moved they can be researched to see if the original data is 
 
 It can handle albums with artwork folders or multiple disc folders in them. It can also handle specials characters. It has been tested and works in both Ubuntu Linux and Windows 10. 
 
+This script is meant to work in conjunction with other scripts in order to manage a large music library when the source of the music has good metadata you want to use to organize it.  You can find an overview of the scripts and workflow at [Origin-Music-Management](https://github.com/spinfast319/Origin-Music-Management). 
+
 ## Dependencies
+This project has a dependency on the gazelle-origin project created by x1ppy. gazelle-origin scrapes gazelle based sites and stores the related music metadata in a yaml file in the music albums folder. For this script to work you need to use a fork that has additional metadata including the tags and coverart. The fork that has the most additional metadata right now is: https://github.com/spinfast319/gazelle-origin
 
-This project has a dependency on the gazelle-origin project created by x1ppy. gazelle-origin scrapes gazelle based sites and stores the related music metadata in a yaml file in the music albums folder. It is located here: https://github.com/x1ppy/gazelle-origin
-
-For this script to work you need origin files with additional metadata. The fork that has the most additional metadata right now is: https://github.com/spinfast319/gazelle-origin
-
-All of the albums you want to check will need to have updated origin files created already.
+All your albums will need origin files origin files associated with them already for this script to work.
 
 
 ## Install and set up
