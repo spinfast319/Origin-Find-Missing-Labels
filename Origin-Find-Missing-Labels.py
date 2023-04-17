@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Find Missing Labels with Origin Files
 # author: hypermodified
 # This python script uses yaml origin files to sort and move albums that have an original record label and/or cat number but not an edition record label and/or cat number
