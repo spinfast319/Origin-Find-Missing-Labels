@@ -11,8 +11,8 @@ import shutil  # Imports functionality that lets you copy files and directory
 import datetime  # Imports functionality that lets you make timestamps
 
 #  Set your directories here
-album_directory = "M:\Python Test Environment\Albums"  # Which directory do you want to start with?
-log_directory = "M:\Python Test Environment\Logs"  # Which directory do you want the log in?
+album_directory = "M:\PROCESS"  # Which directory do you want to start with?
+log_directory = "M:\PROCESS-LOGS\Logs"  # Which directory do you want the log in?
 sort_directory = "M:\Python Test Environment\Sort - Label"  # Directory to move Various Artist albums to
 
 
